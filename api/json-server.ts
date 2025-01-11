@@ -1,13 +1,18 @@
-import express from 'express';
+// pages/api/products.ts
+import { Request, ParamsDictionary, Response } from 'express-serve-static-core';
+import { IncomingMessage, ServerResponse } from 'http';
 import jsonServer from 'json-server';
 import path from 'path';
+import { ParsedQs } from 'qs';
 
-const app = express();
-const router = jsonServer.router(path.join(__dirname, '../db.json'));
-const middlewares = jsonServer.defaults();
-console.log('router', router)
-app.use(middlewares);
-app.use('/api', router); 
-app.listen(3001, () => {
-  console.log('JSON Server is running at http://localhost:3001');
-});
+const handler = (req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>> | IncomingMessage, res: Response<any, Record<string, any>, number> | ServerResponse<IncomingMessage>) => {
+
+  const server = jsonServer.create();
+  const router = jsonServer.router(path.resolve('../db.json')); 
+  const middlewares = jsonServer.defaults();
+  server.use(middlewares);
+  server.use(router);
+  server(req, res);
+};
+
+export default handler;
