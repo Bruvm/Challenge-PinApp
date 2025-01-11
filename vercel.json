@@ -8,7 +8,7 @@
   ],
   "functions": {
     "api/json-server": {
-      "includeFiles": ["db.json"]
+      "includeFiles": "db.json"
     }
   }
 }
