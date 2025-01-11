@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 export async function getSearchProduct(query: string) {
     try {
-      const response = await fetch(`${NEXT_PUBLIC_API_BASE_URL}/products`);
+      const response = await fetch(`${API_BASE_URL}/products`);
       const products = await response.json();
       const filteredProducts = products.filter((product: { name: string; sku: string }) =>
         product.name.toLowerCase().includes(query.toLowerCase()) || 
