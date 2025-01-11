@@ -1,14 +1,15 @@
 {
   "version": 2,
+  "functions": {
+    "api/json-server": {
+      "runtime": "nodejs18.x",
+      "includeFiles": "db.json"
+    }
+  },
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "/api/json-server"
     }
-  ],
-  "functions": {
-    "api/json-server": {
-      "includeFiles": "db.json"
-    }
-  }
+  ]
 }
