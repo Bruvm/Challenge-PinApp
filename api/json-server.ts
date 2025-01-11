@@ -5,7 +5,7 @@ import path from 'path';
 const app = express();
 const router = jsonServer.router(path.join(__dirname, '../db.json'));
 const middlewares = jsonServer.defaults();
-
+console.log('router', router)
 app.use(middlewares);
 app.use('/api', router); 
 app.listen(3001, () => {
