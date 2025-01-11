@@ -24,6 +24,8 @@ export default function Home() {
   const [loader, setLoader] = useState(false)
   const [hasSearched, setHasSearched] = useState(false);
 
+  console.log("API Base URL:", process.env.NEXT_PUBLIC_API_BASE_URL);
+
   const handleSearch = async () => {
     setLoader(true)
     try {
