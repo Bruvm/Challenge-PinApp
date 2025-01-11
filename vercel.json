@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://challenge-pin-app-omu8.vercel.app/api/$1"
+      "dest": "https://challenge-pin-app-kchx.vercel.app/api/$1"
     }
   ]
 }
