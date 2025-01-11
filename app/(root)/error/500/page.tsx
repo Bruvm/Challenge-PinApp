@@ -17,6 +17,7 @@ export default function error500() {
             width={500}
             height={500}
           />
+          <h1 className="text-orange-950">No se pudo cargar correctamente.</h1>
           <BackButton message={'Volver al inicio'}/>
         </div>
         
