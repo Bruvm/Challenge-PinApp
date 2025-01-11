@@ -1,9 +1,8 @@
 {
-  "version": 2,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/:path*",
-      "destination": "/api/json-server.ts"
+      "src": "/api/(.*)",
+      "dest": "https://challenge-pin-app-omu8.vercel.app/api/$1"
     }
   ]
 }
