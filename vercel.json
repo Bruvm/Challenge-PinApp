@@ -3,7 +3,12 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "/api/json-server.ts"
+      "destination": "/api/json-server"
     }
-  ]
+  ],
+  "functions": {
+    "api/json-server": {
+      "includeFiles": ["db.json"]
+    }
+  }
 }
