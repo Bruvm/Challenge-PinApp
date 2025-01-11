@@ -1,7 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import jsonServer from 'json-server';
+import path from 'path';
 
-const handler = (req: NextApiRequest, res: NextApiResponse) => {
-  res.status(200).json({ message: 'API is working!' });
+const router = jsonServer.router(path.join(process.cwd(), 'db.json'));
+const middlewares = jsonServer.defaults();
+
+const handler = (req: any, res: any) => {
+  const server = jsonServer.create();
+  server.use(middlewares);
+  server.use(router);
+  server(req, res);
 };
 
-export default handler;
+module.exports = handler;
