@@ -1,13 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getProductBySku, getSearchProduct } from "@/lib/products.action"
+import { getSearchProduct } from "@/lib/products.action"
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -17,7 +16,8 @@ import Link from "next/link";
 import Spinner from "@/components/shared/Spinner/Spinner";
 import { useRouter } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { BadgeInfo, MessageCircleQuestion, Terminal } from "lucide-react";
+import { BadgeInfo } from "lucide-react";
+import { Product } from "@/interface/Product";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -35,6 +35,7 @@ export default function Home() {
       setLoader(false)
       setHasSearched(true);
     } catch (error) {
+      console.error("Error", error);
       setLoader(false)
     }
   };
@@ -76,7 +77,7 @@ export default function Home() {
           {products.length > 0 ? (
             <div className="grid grid-cols-12 gap-5">
               {
-                products.map((product: any) => (
+                products.map((product: Product) => (
                   <div className="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-3" key={product.sku}>
                     <Card className="h-full flex flex-col" key={product.sku}>
                       <CardHeader>

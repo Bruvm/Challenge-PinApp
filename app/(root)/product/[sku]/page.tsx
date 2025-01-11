@@ -3,22 +3,17 @@
 import { useEffect, useState } from "react";
 import { getProductBySku } from "@/lib/products.action"
 import * as React from "react"
-import { buttonVariants } from "@/components/ui/button"
-
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import Spinner from "@/components/shared/Spinner/Spinner";
 import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
 import BackButton from "@/components/shared/BackButton/BackButton";
 import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
+import { Product } from "@/interface/Product";
 
 interface Params {
   sku: string;
@@ -27,7 +22,6 @@ export default function productDetail() {
   const { sku } = useParams() as unknown as Params;
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
-  const router = useRouter();
 
   const handleSearch = async () => {
     setLoader(true)
@@ -37,7 +31,7 @@ export default function productDetail() {
       setLoader(false)
     } catch (error) {
       setLoader(false)
-      console.log(error)
+      console.error("Error", error);
     }
   };
 
@@ -59,7 +53,7 @@ export default function productDetail() {
           {productDetail.length > 0 ? (
             <div className="flex justify-center">
               <div className="w-full sm:w-10/12 md:w-8/12 lg:w-6/12">
-                {productDetail.map((product: any) => (
+                {productDetail.map((product: Product) => (
                   <div className="mb-6" key={product.sku}>
                     <Card>
                       <CardHeader>
