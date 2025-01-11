@@ -10,5 +10,5 @@ server.use(middlewares);
 server.use("/api", router);
 
 export default (req: IncomingMessage, res: ServerResponse) => {
-  server.emit('request', req, res);
-};
+    return server(req, res); 
+  };
