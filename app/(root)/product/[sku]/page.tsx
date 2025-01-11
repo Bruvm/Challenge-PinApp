@@ -15,18 +15,18 @@ import BackButton from "@/components/shared/BackButton/BackButton";
 import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 import { Product } from "@/interface/Product";
 
-interface Params {
-  sku: string;
-}
-export default function productDetail() {
-  const { sku } = useParams() as unknown as Params;
+export default function ProductDetail() {
+  const { sku } = useParams()
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
 
   const handleSearch = async () => {
     setLoader(true)
     try {
-      const response = await getProductBySku(sku)
+      let response
+      if (typeof sku === 'string') {
+        response = await getProductBySku(sku);
+      }
       setProductDetail(response);
       setLoader(false)
     } catch (error) {

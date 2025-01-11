@@ -14,7 +14,6 @@ import {
 import { Input } from "@/components/ui/input"
 import Link from "next/link";
 import Spinner from "@/components/shared/Spinner/Spinner";
-import { useRouter } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { BadgeInfo } from "lucide-react";
 import { Product } from "@/interface/Product";
@@ -24,8 +23,6 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const [loader, setLoader] = useState(false)
   const [hasSearched, setHasSearched] = useState(false);
-
-  const router = useRouter();
 
   const handleSearch = async () => {
     setLoader(true)
