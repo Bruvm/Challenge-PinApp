@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 export async function getSearchProduct(query: string) {
     try {
-      const response = await fetch(`https://challenge-pin-app.vercel.app/products`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export async function getSearchProduct(query: string) {
   
   export async function getProductBySku(sku: string) {
     try {
-        const response = await fetch(`https://challenge-pin-app.vercel.app/products?sku=${sku}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products?sku=${sku}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

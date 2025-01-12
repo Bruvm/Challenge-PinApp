@@ -1,14 +1,19 @@
-const jsonServer = require('json-server');
+const jsonServer = require("json-server");
+const path = require("path");
+const cors = require("cors");
+
 const server = jsonServer.create();
-const router = jsonServer.router('db.json');
+const router = jsonServer.router(path.join(__dirname, "../db.json"));
 const middlewares = jsonServer.defaults();
-console.log('jsonServer', jsonServer)
-console.log('server', server)
-console.log('router', router)
-console.log('middlewares', middlewares)
+
+const PORT = process.env.PORT || 3001;
+
+server.use(cors()); 
 server.use(middlewares);
+
+
 server.use(router);
 
-module.exports = server;
-
-module.exports = server;
+server.listen(PORT, () => {
+  console.log(`JSON Server está corriendo en http://localhost:${PORT}`);
+});
