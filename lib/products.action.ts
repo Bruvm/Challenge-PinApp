@@ -9,7 +9,6 @@ export async function getSearchProduct(query: string) {
           'Content-Type': 'application/json',
         },
       });
-
       const products = await response.json();
       const filteredProducts = products.filter((product: { name: string; sku: string }) =>
         product.name.toLowerCase().includes(query.toLowerCase()) || 
