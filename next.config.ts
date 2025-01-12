@@ -8,11 +8,11 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://challenge-pin-app.vercel.app//:path*',
-      },
+        source: "/api/:path*",
+        destination: "/server.js"
+      }
     ];
-  },
+  }
 };
 
 export default nextConfig;
