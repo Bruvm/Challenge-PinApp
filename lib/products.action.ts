@@ -16,13 +16,11 @@ export async function getSearchProduct(query: string) {
         product.name.toLowerCase().includes(query.toLowerCase()) || 
         product.sku.toLowerCase().includes(query.toLowerCase())
       );
-      if (!products || products.length === 0) {
-        redirect("/error/404");
-      }
+
       return filteredProducts.length > 0 ? filteredProducts : [];
     } catch (error) {
       console.error("Error", error);
-      redirect("/error/500");
+      return []
     }
   }
   
