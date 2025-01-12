@@ -2,7 +2,6 @@
   "version": 2,
   "functions": {
     "api/json-server.js": {
-      "runtime": "nodejs18.x",
       "includeFiles": "db.json"
     }
   },
