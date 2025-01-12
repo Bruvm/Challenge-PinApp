@@ -1,53 +1,31 @@
 "use server"
 import { redirect } from "next/navigation";
 
-import { useRouter } from 'next/navigation';
-
 export async function getSearchProduct(query: string) {
-  const router = useRouter();
-
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    console.log('REPSONSE:', response)
-
-    if (!response.ok) {
-      console.error(`Error ${response.status}: ${response.statusText}`);
-      if (response.status === 404) {
-        router.push("/error/404");
-      } else {
-        router.push("/error/500");
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('RESPONSE::', response)
+      const products = await response.json();
+      console.log('products::', products)
+      const filteredProducts = products.filter((product: { name: string; sku: string }) =>
+        product.name.toLowerCase().includes(query.toLowerCase()) || 
+        product.sku.toLowerCase().includes(query.toLowerCase())
+      );
+      if (!products || products.length === 0) {
+        redirect("/error/404");
       }
-      return [];
+      return filteredProducts.length > 0 ? filteredProducts : [];
+    } catch (error) {
+      console.error("Error", error);
+      redirect("/error/500");
     }
-
-    const products = await response.json();
-    if (!products || products.length === 0) {
-      console.warn("No se encontraron productos.");
-      router.push("/error/404");
-      return [];
-    }
-
-    const filteredProducts = products.filter((product: { name: string; sku: string }) =>
-      product.name.toLowerCase().includes(query.toLowerCase()) ||
-      product.sku.toLowerCase().includes(query.toLowerCase())
-    );
-
-    return filteredProducts.length > 0 ? filteredProducts : [];
-  } catch (error) {
-    console.error("Error al obtener productos:", error);
-    router.push("/error/500");
-    return [];
   }
-}
-
   
-   
   
   export async function getProductBySku(sku: string) {
     try {
