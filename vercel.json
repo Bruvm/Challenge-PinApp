@@ -1,6 +1,3 @@
 {
-  "version": 2,
-  "routes": [
-    { "src": "/api/json-server", "dest": "/api/json-server.cjs" }
-  ]
+  "version": 2
 }
