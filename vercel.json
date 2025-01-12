@@ -1,10 +1,5 @@
 {
   "version": 2,
-  "functions": {
-    "api/json-server.js": {
-      "includeFiles": "db.json"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/:path*",
