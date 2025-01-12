@@ -1,12 +1,21 @@
+import { createServer } from 'http';
+import { readFileSync } from 'fs';
 import jsonServer from 'json-server';
-import path from 'path';
 
-const router = jsonServer.router(path.join(process.cwd(), 'db.json'));
+const server = jsonServer.create();
+const router = jsonServer.router('./bd.json');
 const middlewares = jsonServer.defaults();
 
-export default async function handler(req: any, res: any) {
-  const server = jsonServer.create();
-  server.use(middlewares);
-  server.use(router);
-  server(req, res);
+server.use(middlewares);
+server.use(router);
+
+export default function handler(req, res) {
+  const port = process.env.PORT || 3000;
+  const serverInstance = createServer((req, res) => {
+    server(req, res);
+  });
+
+  serverInstance.listen(port, () => {
+    console.log(`JSON Server is running on port ${port}`);
+  });
 }
