@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 export async function getSearchProduct(query: string) {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ export async function getSearchProduct(query: string) {
   
   export async function getProductBySku(sku: string) {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products?sku=${sku}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products?sku=${sku}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export async function getSearchProduct(query: string) {
           }
           return [];
         }
-        
+
         const product = await response.json();
         return product; 
       } catch (error) {
