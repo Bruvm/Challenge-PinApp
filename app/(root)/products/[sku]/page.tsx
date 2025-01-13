@@ -14,10 +14,11 @@ import { useRouter } from 'next/router'
 import BackButton from "@/components/shared/BackButton/BackButton";
 import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 import { Product } from "@/interface/Product";
+import { useSearchParams } from "next/navigation";
 
 export default function ProductDetail() {
-  const router = useRouter()
-  const { sku } = router.query
+  const searchParams = useSearchParams();
+  const sku = searchParams.get('sku');
   console.log('sku:::', sku)
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
