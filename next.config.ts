@@ -1,7 +1,8 @@
-import { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    appDir: true,
+  },
   images: {
     unoptimized: true,
   },
@@ -17,3 +18,5 @@ const nextConfig: NextConfig = {
 };
 
 module.exports = nextConfig;
+
+
