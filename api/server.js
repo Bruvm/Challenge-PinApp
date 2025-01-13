@@ -7,7 +7,6 @@ server.use(middlewares)
 server.use(jsonServer.rewriter({
     '/products/*': '/:sku',
     '/api/*': '/$1'
-    
 }))
 
 server.use(router)
