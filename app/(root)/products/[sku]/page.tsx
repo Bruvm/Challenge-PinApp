@@ -13,12 +13,12 @@ import Spinner from "@/components/shared/Spinner/Spinner";
 import BackButton from "@/components/shared/BackButton/BackButton";
 import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 import { Product } from "@/interface/Product";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
 export default function ProductDetail() {
-  const searchParams = useSearchParams();
-  const sku = searchParams.get('sku');
-  console.log('sku:::', sku)
+  const params = useParams();
+  const sku = params.sku; 
+  console.log('sku:::', sku);
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
 
