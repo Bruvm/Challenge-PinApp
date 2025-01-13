@@ -10,14 +10,14 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Spinner from "@/components/shared/Spinner/Spinner";
-import { useParams } from "next/navigation";
+import { useRouter } from 'next/router'
 import BackButton from "@/components/shared/BackButton/BackButton";
 import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 import { Product } from "@/interface/Product";
 
 export default function ProductDetail() {
-  const params = useParams();
-  const sku = params?.sku
+  const router = useRouter()
+  const { sku } = router.query
   console.log('sku:::', sku)
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
