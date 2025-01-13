@@ -4,6 +4,10 @@
     {
       "src": "api/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
     }
   ],
   "rewrites": [
@@ -13,3 +17,4 @@
     }
   ]
 }
+
