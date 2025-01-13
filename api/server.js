@@ -7,9 +7,9 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 // Add this before server.use(router)
 server.use(jsonServer.rewriter({
-    '/api/*': '/$1',              // Las rutas /api/* se redirigen a /$1
-    '/product/*': '/product/:sku' // La ruta /products/* se redirige a /product/:sku
-  }))
+    '/api/*': '/$1',
+    '/products/*': '/:sku'
+}))
 server.use(router)
 server.listen(3000, () => {
     console.log('JSON Server is running')
