@@ -8,7 +8,7 @@ server.use(middlewares)
 // Add this before server.use(router)
 server.use(jsonServer.rewriter({
     '/api/*': '/$1',              // Las rutas /api/* se redirigen a /$1
-    '/products/*': '/product/:sku' // La ruta /products/* se redirige a /product/:sku
+    '/product/*': '/product/:sku' // La ruta /products/* se redirige a /product/:sku
   }))
 server.use(router)
 server.listen(3000, () => {
