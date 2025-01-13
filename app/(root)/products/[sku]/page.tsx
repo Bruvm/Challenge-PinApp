@@ -18,11 +18,13 @@ import { Product } from "@/interface/Product";
 export default function ProductDetail() {
   const params = useParams();
   const sku = params?.sku 
-
+  console.log('sku:::', sku)
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
 
   const handleSearch = async () => {
+    console.log('sku:::', sku)
+
     setLoader(true)
     try {
       let response
@@ -38,7 +40,10 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    handleSearch()
+    if (sku) {
+      handleSearch()
+    } 
+    
   }, [sku]);
 
   return (
