@@ -7,8 +7,12 @@
   },
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "api/server.js"
+      "source": "/api/:path*",
+      "destination": "/api/server.js"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/"
     }
   ]
 }
