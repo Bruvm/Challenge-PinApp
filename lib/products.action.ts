@@ -9,9 +9,16 @@ export async function getSearchProduct(query: string) {
           'Content-Type': 'application/json',
         },
       });
-      console.log('RESPONSE::', response)
+      
+      if (!response.ok) {
+        if (response.status === 404) {
+          redirect('/error/404');
+        } else {
+          redirect('/error/500');
+        }
+        return [];
+      }
       const products = await response.json();
-      console.log('products::', products)
       const filteredProducts = products.filter((product: { name: string; sku: string }) =>
         product.name.toLowerCase().includes(query.toLowerCase()) || 
         product.sku.toLowerCase().includes(query.toLowerCase())
