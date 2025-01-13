@@ -91,14 +91,6 @@ export default function Home() {
                         <Button asChild>
                           <Link href={`/products/${product.sku}`}>Ver Detalle</Link>
                         </Button>
-
-    <Link href={`/products/${product.sku}`} passHref>
-      <button>
-        Ver Detalle
-      </button>
-    </Link>
-
-
                       </CardFooter>
                     </Card>
                   </div>
