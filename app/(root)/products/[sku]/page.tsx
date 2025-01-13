@@ -15,21 +15,18 @@ import BackButton from "@/components/shared/BackButton/BackButton";
 import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 import { Product } from "@/interface/Product";
 
-export default function ProductDetail() {
-  const params = useParams();
-  const sku = params?.sku
-  console.log('sku:::', sku)
+export default function ProductDetail({ params }: { params: { sku: string } }) {
+  console.log('sku:::', params.sku)
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
 
   const handleSearch = async () => {
-    console.log('sku:::', sku)
-
+    params.sku
     setLoader(true)
     try {
       let response
-      if (typeof sku === 'string') {
-        response = await getProductBySku(sku);
+      if (typeof params.sku === 'string') {
+        response = await getProductBySku(params.sku);
       }
       setProductDetail(response);
       setLoader(false)
@@ -40,11 +37,11 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    if (sku) {
+    if (params.sku) {
       handleSearch()
     }
 
-  }, [sku]);
+  }, [params.sku]);
 
   return (
     <div className="grid grid-cols-12 justify-center items-center mt-10 space-y-12 p-5">
