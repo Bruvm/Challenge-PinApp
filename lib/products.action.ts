@@ -41,10 +41,16 @@ export async function getSearchProduct(query: string) {
           },
         });
         
-        const product = await response.json();
-        if (!product || product.length === 0) {
-          redirect("/error/404");
+        if (!response.ok) {
+          if (response.status === 404) {
+            redirect('/error/404');
+          } else {
+            redirect('/error/500');
+          }
+          return [];
         }
+        
+        const product = await response.json();
         return product; 
       } catch (error) {
         console.error("Error", error);
