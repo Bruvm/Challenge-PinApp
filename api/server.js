@@ -8,6 +8,7 @@ server.use(jsonServer.rewriter({
     '/api/*': '/$1',
     '/products/*': '/:sku'
 }))
+
 server.use(router)
 server.listen(3000, () => {
     console.log('JSON Server is running')
