@@ -11,6 +11,10 @@
       "destination": "/api/server.js"
     },
     {
+      "source": "/products/:sku",
+      "destination": "/products/:sku"
+    },
+    {
       "source": "/:path*",
       "destination": "/"
     }

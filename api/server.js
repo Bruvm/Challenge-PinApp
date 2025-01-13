@@ -5,7 +5,7 @@ const middlewares = jsonServer.defaults()
 
 server.use(middlewares)
 server.use(jsonServer.rewriter({
-    '/products/*': '/:sku',
+    '/products/*': '/products/:sku',
     '/api/*': '/$1'
 }))
 
