@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "api/**/*.ts", "api/json-server.cjs", "api/json-server.cjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/**/*.ts", "pages/api/json-server.cjs", "pages/api/json-server.cjs"],
   "exclude": ["node_modules"]
 }

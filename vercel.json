@@ -9,6 +9,10 @@
     {
       "source": "/(.*)",
       "destination": "api/server.js"
+    },
+    {
+      "source": "/products/:sku",
+      "destination": "/products/[sku]"
     }
   ]
 }
