@@ -5,14 +5,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/(.*)',
-        destination: 'api/server.js',
-      },
-    ];
-  },
   async redirects() {
     return [
       {
