@@ -23,6 +23,7 @@ export default function ProductDetail() {
   const [loader, setLoader] = useState(false)
 
   const handleSearch = async () => {
+    console.log(sku)
     setLoader(true)
     try {
       let response
@@ -38,7 +39,8 @@ export default function ProductDetail() {
   };
 
   useEffect(() => {
-    handleSearch()
+    if (sku) handleSearch()
+    
   }, [sku]);
 
   return (
