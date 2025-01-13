@@ -95,7 +95,7 @@ export default function Home() {
                       </CardContent>
                       <CardFooter className="flex justify-end">
                         <Button asChild>
-                          <Link href={`/products/${product.sku}`}>Ver Detalle</Link>
+                          <Link href={`/product/${product.sku}`}>Ver Detalle</Link>
                         </Button>
                       </CardFooter>
                     </Card>
