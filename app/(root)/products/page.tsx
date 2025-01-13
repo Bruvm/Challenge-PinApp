@@ -6,9 +6,8 @@ import { useEffect } from "react";
 export default function ProductsPage () {
     const handleSearch = async () => {
       try {
-        let response
-          response = await getProductBySku('P001');
-          console.log('response')
+        const response = await getProductBySku('P001');
+          console.log('response', response)
       } catch (error) {
         console.error("Error", error);
       }
