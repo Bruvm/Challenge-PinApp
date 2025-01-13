@@ -10,8 +10,6 @@ const PORT = process.env.PORT || 3001;
 
 server.use(cors()); 
 server.use(middlewares);
-
-
 server.use(router);
 
 server.listen(PORT, () => {
