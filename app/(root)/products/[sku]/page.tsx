@@ -17,7 +17,7 @@ import { Product } from "@/interface/Product";
 
 export default function ProductDetail({ params: paramsPromise }: { params: Promise<{ sku: string }> }) {
   const { sku } = use(paramsPromise);
-
+  console.log('sku', sku)
   const [productDetail, setProductDetail] = useState<Product[]>([]);
   const [loader, setLoader] = useState(false);
 
