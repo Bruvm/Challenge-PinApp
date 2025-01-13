@@ -10,7 +10,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import Spinner from "@/components/shared/Spinner/Spinner";
-import { useRouter } from 'next/router'
 import BackButton from "@/components/shared/BackButton/BackButton";
 import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 import { Product } from "@/interface/Product";
