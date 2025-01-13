@@ -23,7 +23,8 @@ export default function ProductDetail() {
   const [loader, setLoader] = useState(false)
 
   const handleSearch = async () => {
-    console.log(sku)
+    console.log('sku:::', sku)
+
     setLoader(true)
     try {
       let response
