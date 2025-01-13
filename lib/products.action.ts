@@ -14,7 +14,7 @@ export async function getSearchProduct(query: string) {
       if (!response.ok) {
         if (response.status === 404) {
           redirect('/error/404');
-        } else {
+        } else if (response.status === 500) {
           redirect('/error/500');
         }
         return [];
@@ -45,7 +45,7 @@ export async function getSearchProduct(query: string) {
         if (!response.ok) {
           if (response.status === 404) {
             redirect('/error/404');
-          } else {
+          } else if (response.status === 500) {
             redirect('/error/500');
           }
           return [];

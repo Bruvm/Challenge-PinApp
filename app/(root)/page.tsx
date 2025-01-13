@@ -83,16 +83,15 @@ export default function Home() {
                       <CardHeader>
                         <CardTitle><span className="text-orange-700">{product.name}</span></CardTitle>
                       </CardHeader>
-                      <CardContent className="flex-grow">
-                        <div>
+                      <CardContent className="flex-grow ">
+                        <div className="flex justify-center">
                           <ImageComponent imageUrl={product.image} />
-                          <span className="text-xs text-muted-foreground"> / SKU: {product.sku} </span>
+                         
                         </div>
-                        <div>
+                        <span className="text-xs text-muted-foreground"> / SKU: {product.sku} </span>
                         <p><span className="font-bold">Categoría:</span> {product.description}</p>
                         <p><span className="font-bold">Marca:</span> {product.category.name}</p>
                         <p><span className="font-bold">Precio:</span> ${product.price}</p>
-                        </div>
                       </CardContent>
                       <CardFooter className="flex justify-end">
                         <Button asChild>
