@@ -16,7 +16,9 @@ import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 import { Product } from "@/interface/Product";
 
 export default function ProductDetail() {
-  const { sku } = useParams()
+  const params = useParams();
+  const sku = params?.sku 
+
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
 

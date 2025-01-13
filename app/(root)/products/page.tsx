@@ -1,7 +1,5 @@
 "use client";
-export default function ProductPage () {
-  return (
-    <div>Product page</div>
-  );
+export default function ProductsPage () {
+  return null
 }
 
