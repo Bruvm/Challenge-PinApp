@@ -17,7 +17,7 @@ import { Product } from "@/interface/Product";
 
 export default function ProductDetail() {
   const params = useParams();
-  const sku = params?.sku 
+  const sku = params?.sku
   console.log('sku:::', sku)
   const [productDetail, setProductDetail] = useState([]);
   const [loader, setLoader] = useState(false)
@@ -42,8 +42,8 @@ export default function ProductDetail() {
   useEffect(() => {
     if (sku) {
       handleSearch()
-    } 
-    
+    }
+
   }, [sku]);
 
   return (
@@ -67,7 +67,10 @@ export default function ProductDetail() {
                         <CardTitle className="text-orange-700">{product.name}</CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <ImageComponent imageUrl={product.image} />
+                        <div className="flex justify-center">
+                          <ImageComponent imageUrl={product.image} />
+                        </div>
+                        <span className="text-xs text-muted-foreground"> / SKU: {product.sku} </span>
                         <p><span className="font-bold">Nombre del producto:</span> {product.description}</p>
                         <p><span className="font-bold">Código SKU:</span> {product.sku}</p>
                         <p><span className="font-bold">Categoría:</span> {product.category.name}</p>
@@ -91,10 +94,10 @@ export default function ProductDetail() {
             </div>
           )
             : <div className="col-span-12 mb-4 flex justify-center mt-6">
-                <div className="w-full sm:w-10/12 md:w-8/12 lg:w-6/12">
-                  <p className="text-center text-orange-950">Lo sentimos, no tenemos información sobre este producto.</p>
-                </div>
+              <div className="w-full sm:w-10/12 md:w-8/12 lg:w-6/12">
+                <p className="text-center text-orange-950">Lo sentimos, no tenemos información sobre este producto.</p>
               </div>
+            </div>
           }
         </div>
       }

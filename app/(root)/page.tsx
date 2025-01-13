@@ -17,6 +17,7 @@ import Spinner from "@/components/shared/Spinner/Spinner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { BadgeInfo } from "lucide-react";
 import { Product } from "@/interface/Product";
+import ImageComponent from "@/components/shared/ImageComponent/ImageComponent";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -80,12 +81,18 @@ export default function Home() {
                   <div className="col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-3" key={product.sku}>
                     <Card className="h-full flex flex-col" key={product.sku}>
                       <CardHeader>
-                        <CardTitle className="text-orange-700">{product.name}</CardTitle>
+                        <CardTitle><span className="text-orange-700">{product.name}</span></CardTitle>
                       </CardHeader>
                       <CardContent className="flex-grow">
+                        <div>
+                          <ImageComponent imageUrl={product.image} />
+                          <span className="text-xs text-muted-foreground"> / SKU: {product.sku} </span>
+                        </div>
+                        <div>
                         <p><span className="font-bold">Categoría:</span> {product.description}</p>
                         <p><span className="font-bold">Marca:</span> {product.category.name}</p>
                         <p><span className="font-bold">Precio:</span> ${product.price}</p>
+                        </div>
                       </CardContent>
                       <CardFooter className="flex justify-end">
                         <Button asChild>
@@ -115,7 +122,7 @@ export default function Home() {
                           <BadgeInfo className="h-4 w-4" />
                           <AlertTitle>Ey!</AlertTitle>
                           <AlertDescription>
-                            Para utilizar esta aplicación tan solo debes colocar el numbre tu producto a código SKU de tu producto en el buscador.
+                            Para utilizar esta aplicación tan solo debes colocar el nombre tu producto a código SKU de tu producto en el buscador.
                           </AlertDescription>
                         </Alert>
                       </div>
