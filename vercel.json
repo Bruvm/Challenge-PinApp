@@ -11,8 +11,8 @@
       "destination": "api/server.js"
     },
     {
-     "source": "products/:id",
-      "destination": "products/:id"
+     "source": "product/:id",
+      "destination": "product/:id"
     }
   ]
 }
